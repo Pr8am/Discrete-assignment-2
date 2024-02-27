@@ -233,13 +233,18 @@ y_1\brak{n} &= x_1\brak{n}\ast u\brak{n}\\
     Y_1\brak{z} &= X_1\brak{z} U\brak{z} \\
  &= \frac{6z^{-1}}{\brak{1-z^{-1}}^5} , \abs{z}> 1 
 \end{align}
-Now we take the inverse z-tranform of this equation.\\
 \\
-On solving we get:
+This can be rewritten as:
+\\
 \begin{align}
-y(n) = \frac{n \brak{n+1} \brak{n+2} \brak{n+3}}{4}
+y_1\brak{z} = \frac{6}{\brak{1-z^{-1}}^5} - \frac{6}{\brak{1-z^{-1}}^4} , \abs{z}> 1 
+\end{align}
+Now we take the inverse z-tranform of both the terms separately:\\
+\begin{align}
+y \brak{n} &= \frac{\brak{n+1} \brak{n+2} \brak{n+3} \brak{n+4}}{24} - \frac{\brak{n+1} \brak{n+2} \brak{n+3}}{6} \\
+ \implies y\brak{n} &= \frac{n \brak{n+1} \brak{n+2} \brak{n+3}}{4}
 \end{align}\\
 \\
 Hence the sum of n terms of the above series is \\\\
-$y(n) = \frac{n \brak{n+1} \brak{n+2} \brak{n+3}}{4}$
+$y \brak{n} = \frac{n \brak{n+1} \brak{n+2} \brak{n+3}}{4}$
 \end{document}	
