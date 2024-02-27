@@ -237,11 +237,19 @@ y_1\brak{n} &= x_1\brak{n}\ast u\brak{n}\\
 This can be rewritten as:
 \\
 \begin{align}
-y_1\brak{z} = \frac{6}{\brak{1-z^{-1}}^5} - \frac{6}{\brak{1-z^{-1}}^4} , \abs{z}> 1 
+Y_1\brak{z} = 6z^{-1} \brak{1-z^{-1}}^{-5} , \abs{z}> 1 
 \end{align}
-Now we take the inverse z-tranform of both the terms separately:\\
+Now, we can solve this question by expanding the power term using binomial theorum:
 \begin{align}
-y \brak{n} &= \frac{\brak{n+1} \brak{n+2} \brak{n+3} \brak{n+4}}{24} - \frac{\brak{n+1} \brak{n+2} \brak{n+3}}{6} \\
+Y_1 \brak{z} &= 6 \sbrak{z^{-1} - 5z^{-2} + \frac{\brak{-5} \brak{-6}}{2!} \brak{z^{-3}}.....}\\
+&= 6\sum_{n=1}^\infty \frac{\brak{3+n}!}{\brak{n-1}! 4!}  z^{-n}
+\end{align}
+$\therefore$ our z transform will  just be:
+\begin{align}
+y\brak{n} &= 6\frac{\brak{3+n}!}{\brak{n-1}! 4!}
+\end{align}
+On simplifying:
+\begin{align}
  \implies y\brak{n} &= \frac{n \brak{n+1} \brak{n+2} \brak{n+3}}{4}
 \end{align}\\
 \\
