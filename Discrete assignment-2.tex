@@ -219,40 +219,38 @@ EE23BTECH11221
 \section{Question 1.2.4}
 1 × 2 × 3 + 2 × 3 × 4 + 3 × 4 × 5 + ...
 \section{Solution}
+\begin{table}[!h]
+    \centering
+    \input{Tables/table4} \vspace{0.5cm}
+    \caption{Values} 
+    \label{tab:mytable}
+\end{table}
 \begin{align}
  X\brak{z} &= \sum_{n=-\infty}^\infty x \brak{n}  z^{-n}\\
   &= \sum_{n=-\infty}^\infty \brak{n^{3} + 3n^{2} + 2n} u\brak{n} z^{-n}
  \end{align}
- Using results of z-transform:
+ Using known results of z-transform:
  \begin{align}
  \therefore   X\brak{z}&= \frac{6z^-1}{\brak{1-z^{-1}}^4} ,   \abs{z} >1 
  \end{align}
 We know:
 \begin{align}
-y_1\brak{n} &= x_1\brak{n}\ast u\brak{n}\\
-    Y_1\brak{z} &= X_1\brak{z} U\brak{z} \\
+y\brak{n} &= x_1\brak{n}\ast u\brak{n}\\
+    Y\brak{z} &= X_1\brak{z} U\brak{z} \\
  &= \frac{6z^{-1}}{\brak{1-z^{-1}}^5} , \abs{z}> 1 
 \end{align}
 \\
-This can be rewritten as:
+Using partial fractions to form z-transform pairs:
 \\
 \begin{align}
-Y_1\brak{z} = 6z^{-1} \brak{1-z^{-1}}^{-5} , \abs{z}> 1 
+Y(z) &= \frac{6z^{-1}}{\brak{1-z^{-1}}} + \frac{24z^{-2}}{\brak{1-z^{-1}}^2} + \frac{36z^{-3}}{\brak{1-z^{-3}}^3} , \\
+    &+ \frac{24z^{-4}}{\brak{1-z^{-1}}^4}+\frac{6z^{-5}}{\brak{1-z^{-1}}^5} , \abs{z}>1 \notag
 \end{align}
-Now, we can solve this question by expanding the power term using binomial theorum:
+Substituting results of inverse z-transform:
 \begin{align}
-Y_1 \brak{z} &= 6 \sbrak{z^{-1} - 5z^{-2} + \frac{\brak{-5} \brak{-6}}{2!} \brak{z^{-3}}.....}\\
-&= 6\sum_{n=1}^\infty \frac{\brak{3+n}!}{\brak{n-1}! 4!}  z^{-n}
+ y\brak{n} &= \frac{n^4 + 6n^3 + 11n^2 + 6n}{4}u\brak{n}\\
+    &= \frac{n\brak{n+1}\brak{n+2}\brak{n+3}}{4}u\brak{n}
 \end{align}
-$\therefore$ our z transform will  just be:
-\begin{align}
-y\brak{n} &= 6\frac{\brak{3+n}!}{\brak{n-1}! 4!}
-\end{align}
-On simplifying:
-\begin{align}
- \implies y\brak{n} &= \frac{n \brak{n+1} \brak{n+2} \brak{n+3}}{4}
-\end{align}\\
-\\
 Hence the sum of n terms of the above series is \\\\
 $y \brak{n} = \frac{n \brak{n+1} \brak{n+2} \brak{n+3}}{4}$
 \end{document}	
