@@ -12,11 +12,14 @@ def y_n(n):
 n_values = list(range(1, 11))
 y_values = [y_n(n) for n in n_values]
 
+# Read values from code.dat
+with open("code.dat", "r") as file:
+    given_values = [int(line.strip()) for line in file]
+
 # Create a stem plot
 plt.stem(n_values, y_values, linefmt='-b', markerfmt='ob', basefmt=' ')
 
-# Values givnen by the c code
-given_values = [6, 30, 90, 210, 420, 756, 1260, 1980, 2970, 4290]
+# Plot the values from code.dat
 plt.scatter(range(1, 11), given_values, marker='x', color='r', label='Given Values', zorder=10)
 
 plt.title('Sum of n terms of the sequence (Stem Plot with Scatter)')
