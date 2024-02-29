@@ -28,7 +28,6 @@ plt.scatter(simulation_x, simulation_y, color='b', label='Simulation')
 
 plt.xlabel('X-axis label')
 plt.ylabel('Y-axis label')
-plt.title('Analysis vs Simulation')
 plt.legend()
 plt.grid(True)
 plt.show()
