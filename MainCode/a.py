@@ -1,34 +1,39 @@
 import matplotlib.pyplot as plt
 
-# Function to read data from a .dat file
-def read_dat_file(filename):
+def read_dat_file(file_path):
     x = []
     y = []
-    with open(filename, 'r') as file:
+    with open(file_path, 'r') as file:
         for line in file:
-            data = line.strip().split()
-            x.append(float(data[0]))
-            y.append(float(data[1]))
+            data = line.split()
+            x.append(int(data[0]))
+            y.append(int(data[1]))
     return x, y
 
-# Read data from analysis.dat
-analysis_x, analysis_y = read_dat_file('analysis.dat')
+# Path to the first dat file (stem plot)
+pth_stem = "analysis.dat"
+x_stem, y_stem = read_dat_file(pth_stem)
 
-# Read data from simulation.dat
-simulation_x, simulation_y = read_dat_file('simulation.dat')
+# Path to the second dat file (scatter plot)
+pth_scatter = "simulation.dat"
+x_scatter, y_scatter = read_dat_file(pth_scatter)
 
-# Plotting
+# Create a new figure
 plt.figure(figsize=(10, 6))
 
-# Stem plot for analysis.dat
-plt.stem(analysis_x, analysis_y, linefmt='r-', markerfmt='ro', basefmt=' ')
+# Plot stem plot
+plt.stem(x_stem, y_stem, linefmt='b-', markerfmt='bo', basefmt=' ', label='Convolution')
 
-# Scatter plot for simulation.dat
-plt.scatter(simulation_x, simulation_y, color='b', label='Simulation')
+# Plot scatter plot
+plt.scatter(x_scatter, y_scatter, color='r', label='y(n)')
 
-plt.xlabel('X-axis label')
-plt.ylabel('Y-axis label')
+# Add labels and title
+plt.xlabel('Index')
+plt.ylabel('Value')
+# Add legend
 plt.legend()
+
+# Show plot
 plt.grid(True)
 plt.show()
 
