@@ -1,25 +1,28 @@
-import numpy as np
 import matplotlib.pyplot as plt
 
-# Define the function y(n)
-def y(n):
-    return (n**4 + 6*n**3 + 11*n**2 + 6*n) / 4
+# Function to calculate the nth term of the sequence
+def term_n(n):
+    return n * (n + 1) * (n + 2)
 
-# Generate positive values for n
-n_values = np.arange(0, 11)  # Range of n from 0 to 10
+# Function to calculate y(n), the sum of n terms of the sequence
+def y_n(n):
+    return sum(term_n(i) for i in range(1, n + 1))
 
-# Calculate y(n) for each n
-y_values = y(n_values)
+# Calculate y(n) for n = 1 to 10
+n_values = list(range(1, 11))
+y_values = [y_n(n) for n in n_values]
 
-# Plot y(n) vs n using stem plot
-plt.stem(n_values, y_values, linefmt='b-', markerfmt='bo', basefmt=' ')
-plt.title('$y(n) = \\frac{n^4 + 6n^3 + 11n^2 + 6n}{4}$')
+# Create a stem plot
+plt.stem(n_values, y_values, linefmt='-b', markerfmt='ob', basefmt=' ')
+
+# Values givnen by the c code
+given_values = [6, 30, 90, 210, 420, 756, 1260, 1980, 2970, 4290]
+plt.scatter(range(1, 11), given_values, marker='x', color='r', label='Given Values', zorder=10)
+
+plt.title('Sum of n terms of the sequence (Stem Plot with Scatter)')
 plt.xlabel('n')
 plt.ylabel('y(n)')
+plt.legend()
 plt.grid(True)
-
-# Add crosses over the points marked
-plt.scatter(n_values, y_values, color='r', marker='x', zorder=3)
-
 plt.show()
 

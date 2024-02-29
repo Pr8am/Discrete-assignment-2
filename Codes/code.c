@@ -20,7 +20,7 @@ int main() {
     int n;
     for (n = 1; n <= 10; n++) {
         int result = sumOfSeries(n);
-        printf("%d %d\n", n, result);
+        printf("%d\n", result);
     }
     return 0;
 }
