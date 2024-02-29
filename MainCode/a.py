@@ -1,24 +1,35 @@
 import matplotlib.pyplot as plt
 
-# Read data from the dat file
-with open("analysis.dat", "r") as file:
-    data = file.readlines()
+# Function to read data from a .dat file
+def read_dat_file(filename):
+    x = []
+    y = []
+    with open(filename, 'r') as file:
+        for line in file:
+            data = line.strip().split()
+            x.append(float(data[0]))
+            y.append(float(data[1]))
+    return x, y
 
-# Extract the values from the data
-values = [int(value.split()[1]) for value in data]
+# Read data from analysis.dat
+analysis_x, analysis_y = read_dat_file('analysis.dat')
 
-# Plot the values as a stem plot
-plt.stem(values, linefmt='b-', markerfmt='bo', basefmt=' ')
+# Read data from simulation.dat
+simulation_x, simulation_y = read_dat_file('simulation.dat')
 
-# Calculate the sum of the series for each value of n
-sum_series = [sum(range(i, i+3)) for i in range(1, 10)]
+# Plotting
+plt.figure(figsize=(10, 6))
 
-# Plot the sum of the series as a scatter plot overlaid on top of the stem plot
-plt.scatter(range(1, 10), sum_series, color='r', label='Sum of series')
+# Stem plot for analysis.dat
+plt.stem(analysis_x, analysis_y, linefmt='r-', markerfmt='ro', basefmt=' ')
 
-plt.xlabel('Index')
-plt.ylabel('Value / Sum')
-plt.grid(True)
+# Scatter plot for simulation.dat
+plt.scatter(simulation_x, simulation_y, color='b', label='Simulation')
+
+plt.xlabel('X-axis label')
+plt.ylabel('Y-axis label')
+plt.title('Analysis vs Simulation')
 plt.legend()
+plt.grid(True)
 plt.show()
 
